@@ -7,6 +7,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "src/css": "css",
     "src/.nojekyll": ".nojekyll",
+    "src/CNAME": "CNAME",
   });
   eleventyConfig.addWatchTarget("src/css/");
 
@@ -23,8 +24,9 @@ export default function (eleventyConfig) {
       language: site.language,
       title: site.title,
       subtitle: site.description,
-      // Origin only. --pathprefix adds /bread-and-circuses/ for the Pages URL.
-      base: site.origin,
+      // Production is the custom domain at root. --pathprefix is only for
+      // optional github.io project-pages previews (npm run start-ghpages).
+      base: site.url,
       author: {
         name: site.author.name,
       },
