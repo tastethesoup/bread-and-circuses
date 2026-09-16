@@ -1,10 +1,15 @@
 # Deploy to GitHub Pages
-
+#
 # After merging to main:
 # 1. Repo Settings > Pages > Build and deployment > Source: GitHub Actions
-# 2. Staging URL: https://tastethesoup.github.io/bread-and-circuses/
+# 2. Repo Settings > Pages > Custom domain: breadandcircuses.xyz (then Enforce HTTPS)
+# 3. Production URL: https://breadandcircuses.xyz/
+# 4. Staging URL https://tastethesoup.github.io/bread-and-circuses/ may redirect
+#    once the custom domain is set.
 #
-# Do not add a CNAME file in Phase 1. Custom domain cutover is optional Phase 2.
+# This workflow publishes a CNAME file in the built site. GitHub Actions Pages
+# still needs the custom domain entered in Settings. DNS at Squarespace is not
+# changed by this repo; see README.
 
 name: Deploy to GitHub Pages
 
@@ -37,7 +42,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build-ghpages
+        run: npm run build
 
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
