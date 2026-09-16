@@ -159,6 +159,24 @@ main {
   margin-bottom: 0;
 }
 
+.post-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 1.25rem;
+}
+
+.post-body blockquote {
+  margin: 0 0 1rem;
+  padding-left: 1.1rem;
+  border-left: 3px solid var(--rule);
+  color: var(--muted);
+}
+
+.post-body blockquote p:last-child {
+  margin-bottom: 0;
+}
+
 .post-body ul,
 .post-body ol {
   margin: 0 0 1rem;

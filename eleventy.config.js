@@ -6,6 +6,7 @@ import site from "./src/_data/site.json" with { type: "json" };
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "src/css": "css",
+    "src/img": "img",
     "src/.nojekyll": ".nojekyll",
   });
   eleventyConfig.addWatchTarget("src/css/");
