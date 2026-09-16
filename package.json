@@ -1,0 +1,21 @@
+{
+  "name": "bread-and-circuses",
+  "version": "1.0.0",
+  "description": "Bread and Circuses personal blog, built with Eleventy.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "build-ghpages": "npx @11ty/eleventy --pathprefix=/bread-and-circuses/",
+    "start": "npx @11ty/eleventy --serve",
+    "start-ghpages": "npx @11ty/eleventy --pathprefix=/bread-and-circuses/ --serve"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-plugin-rss": "^3.0.0"
+  }
+}
