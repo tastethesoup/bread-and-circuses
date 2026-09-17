@@ -266,11 +266,12 @@ main {
   top: 0;
   z-index: 20;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 0.05rem 0.15rem;
+  justify-content: space-between;
+  gap: 0;
   margin: 0.75rem -1.25rem 1.15rem;
-  padding: 0.28rem 1.25rem;
+  padding: 0.22rem 1.25rem;
   background: var(--nav-bar);
   border-bottom: 1px solid var(--rule);
 }
@@ -279,19 +280,20 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 1.75rem;
-  padding: 0.2rem 0.45rem;
+  min-height: 1.7rem;
+  padding: 0.18rem 0.28rem;
   color: var(--muted);
   background: transparent;
   border: 0;
   border-radius: 0;
   font-family: system-ui, "Segoe UI", sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .log-nav a:hover {
