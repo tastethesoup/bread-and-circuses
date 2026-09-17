@@ -1,74 +1,70 @@
 {
-  "paper-lions": {
-    "name": "Paper Lions",
-    "abbr": "PL",
-    "color": "#c45c26",
-    "logo": "/assets/logos/paper-lions.svg"
+  "prestige-worldwide": {
+    "name": "Prestige Worldwide",
+    "owner": "Sean Lockovich",
+    "abbr": "PW",
+    "color": "#2a6b73",
+    "logo": "/assets/logos/prestige-worldwide.jpg"
   },
-  "idle-hands": {
-    "name": "Idle Hands",
-    "abbr": "IH",
-    "color": "#3d5a80",
-    "logo": "/assets/logos/idle-hands.svg"
+  "ceedeez-nutz": {
+    "name": "CeeDeez Nutz",
+    "owner": "Eric Bunn",
+    "abbr": "CN",
+    "color": "#331c07",
+    "logo": "/assets/logos/ceedeez-nutz.svg"
   },
-  "sunday-gentlemen": {
-    "name": "Sunday Gentlemen",
-    "abbr": "SG",
-    "color": "#2c2a28",
-    "logo": "/assets/logos/sunday-gentlemen.svg"
-  },
-  "the-commons": {
-    "name": "The Commons",
-    "abbr": "TC",
+  "size-matters": {
+    "name": "Size Matters",
+    "owner": "Nick Harper",
+    "abbr": "SM",
     "color": "#2f5d50",
-    "logo": "/assets/logos/the-commons.svg"
+    "logo": "/assets/logos/size-matters.svg"
   },
-  "bread-line": {
-    "name": "Bread Line",
-    "abbr": "BL",
-    "color": "#a67c52",
-    "logo": "/assets/logos/bread-line.svg"
+  "aints-dat-a-b-payola": {
+    "name": "AINTS dat a B** Payola",
+    "owner": "Micah Goins",
+    "abbr": "AD",
+    "color": "#3d6b4a",
+    "logo": "/assets/logos/aints-dat-a-b-payola.svg"
   },
-  "quiet-luxury": {
-    "name": "Quiet Luxury",
-    "abbr": "QL",
-    "color": "#6b6560",
-    "logo": "/assets/logos/quiet-luxury.svg"
+  "drake-it-to-you-make-it": {
+    "name": "Drake It To You Make It",
+    "owner": "James D",
+    "abbr": "DI",
+    "color": "#ae6219",
+    "logo": "/assets/logos/drake-it-to-you-make-it.svg"
   },
-  "circus-maximus": {
-    "name": "Circus Maximus",
-    "abbr": "CM",
-    "color": "#7a1f1f",
-    "logo": "/assets/logos/circus-maximus.svg"
+  "sutt-dog": {
+    "name": "-Sutt-Dog -",
+    "owner": "Chris Sutton",
+    "abbr": "SD",
+    "color": "#0b76b2",
+    "logo": "/assets/logos/sutt-dog.svg"
   },
-  "false-nine": {
-    "name": "False Nine",
-    "abbr": "F9",
-    "color": "#1f6f6a",
-    "logo": "/assets/logos/false-nine.svg"
+  "lock-in-fn": {
+    "name": "Lock in fn",
+    "owner": "Reggie B",
+    "abbr": "LI",
+    "color": "#5b4b8a"
   },
-  "second-breakfast": {
-    "name": "Second Breakfast",
-    "abbr": "SB",
-    "color": "#b5812e",
-    "logo": "/assets/logos/second-breakfast.svg"
+  "team-robottom": {
+    "name": "Team Robottom",
+    "owner": "Chad Robottom",
+    "abbr": "TR",
+    "color": "#1b8842",
+    "logo": "/assets/logos/team-robottom.svg"
   },
-  "harmless-fun": {
-    "name": "Harmless Fun",
-    "abbr": "HF",
-    "color": "#5b4b8a",
-    "logo": "/assets/logos/harmless-fun.svg"
+  "pimp-trick-gangsta-clique": {
+    "name": "Pimp Trick Gangsta Clique",
+    "owner": "Bernard Ford",
+    "abbr": "PT",
+    "color": "#5b2a7a"
   },
-  "the-backbench": {
-    "name": "The Backbench",
-    "abbr": "TB",
-    "color": "#243a5e",
-    "logo": "/assets/logos/the-backbench.svg"
-  },
-  "municipal-waste": {
-    "name": "Municipal Waste",
-    "abbr": "MW",
-    "color": "#5c6840",
-    "logo": "/assets/logos/municipal-waste.svg"
+  "jackmerius-tacktheritrix": {
+    "name": "Jackmerius Tacktheritrix",
+    "owner": "Brandon Sims",
+    "abbr": "JT",
+    "color": "#1a1a1a",
+    "logo": "/assets/logos/jackmerius-tacktheritrix.png"
   }
 }

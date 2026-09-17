@@ -17,34 +17,34 @@ log:
   record: 3-2          # optional; otherwise counted from scored games
   gamesIntro: Optional sentence above the cards.
   games:
-    - home: Paper Lions
-      away: Idle Hands
+    - home: "Prestige Worldwide"
+      away: "CeeDeez Nutz"
       homeScore: 142.8
       awayScore: 117.3
-      pick: Paper Lions   # omit for NO PICK
+      pick: "Prestige Worldwide"   # omit for NO PICK
       roast: One sentence. No need for a photo.
   rankingsIntro: Optional.
   rankings:
-    - team: Circus Maximus
+    - team: "Drake It To You Make It"
       record: 1-0
   blotter:
-    - team: The Commons
+    - team: "AINTS dat a B** Payola"
       charge: Sitting the wrong tight end
       evidence: One line of evidence.
   slate:
-    - home: Paper Lions
-      away: Sunday Gentlemen
-      pick: Paper Lions
+    - home: "Prestige Worldwide"
+      away: "Drake It To You Make It"
+      pick: "Prestige Worldwide"
       gotw: true
   gotw:
-    home: Paper Lions
-    away: Sunday Gentlemen
-    pick: Paper Lions
+    home: "Prestige Worldwide"
+    away: "Drake It To You Make It"
+    pick: "Prestige Worldwide"
     gotw: true
     blurb: Why this is the game of the week.
 ```
 
-Team names can be the full name or the slug (`paper-lions`). Unknown names still render, with initials instead of a logo.
+Team names can be the full name or the slug (`prestige-worldwide`). Quote names that start with a hyphen (like `"-Sutt-Dog -"`). Unknown names still render, with initials instead of a logo. The league has 10 teams.
 
 The Markdown body is the cold open (and any extra notes). Games, rankings, blotter, slate, and GOTW come from `log` so you are not maintaining two copies.
 
@@ -104,9 +104,9 @@ In Markdown you can also drop a chip with `{% logChip "HIT" %}`.
 
 ## Logos
 
-Team records live in `src/_data/logTeams.json`. Artwork lives in `src/assets/logos/`. Read that folder's README to add or replace a mark.
+Team records live in `src/_data/logTeams.json` (10 teams, ESPN leagueId 856379). Artwork lives in `src/assets/logos/`. Read that folder's README for the cache vs initials fallback table.
 
-If the file is missing, the path is wrong, or the image 404s, the card shows a colored initials avatar. Do not hotlink ESPN CDN URLs.
+If the file is missing, the path is wrong, `logo` is omitted, or the image 404s, the card shows a colored initials avatar. Do not hotlink ESPN CDN, Photobucket, WordPress, or Mystique URLs.
 
 ## Sticky nav
 
