@@ -45,7 +45,8 @@
     "name": "Lock in fn",
     "owner": "Reggie B",
     "abbr": "LI",
-    "color": "#5b4b8a"
+    "color": "#5b4b8a",
+    "logo": "/assets/logos/lock-in-fn.png"
   },
   "team-robottom": {
     "name": "Team Robottom",

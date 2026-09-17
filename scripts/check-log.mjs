@@ -32,6 +32,7 @@ mustExist("assets/logos/drake-it-to-you-make-it.svg");
 mustExist("assets/logos/sutt-dog.svg");
 mustExist("assets/logos/team-robottom.svg");
 mustExist("assets/logos/jackmerius-tacktheritrix.png");
+mustExist("assets/logos/lock-in-fn.png");
 
 if (existsSync(path.join(site, "assets/logos/paper-lions.svg"))) {
   fail("sample Paper Lions logo should not ship");

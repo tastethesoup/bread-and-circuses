@@ -71,7 +71,7 @@ If the workflow’s deploy job fails with a Pages permissions error, the Source 
 
 `src/posts/2026-09-16-log-week-1.md` is a sample LOG Week 1 newsletter for the 10-team League of Ordinary Gentlemen (ESPN leagueId 856379). It is laid out for phones: stacked matchup cards, sticky section nav, blotter tickets, a pull quote, and pick/result chips. Scores and roasts are illustrative. Team names, owners, and logos come from the live roster map.
 
-Author notes for weekly LOG posts (front matter, pull quotes, logos, chips) are in [docs/log.md](docs/log.md). Cached logos live in `src/assets/logos/` with a short README there (including which two teams fall back to initials).
+Author notes for weekly LOG posts (front matter, pull quotes, logos, chips) are in [docs/log.md](docs/log.md). Cached logos live in `src/assets/logos/` with a short README there (Pimp Trick Gangsta Clique still falls back to initials).
 
 An Atom feed is at `/feed.xml`.
 

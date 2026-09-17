@@ -38,7 +38,7 @@ Tried once from the provided logo map. Cached files are the ones that downloaded
 | AINTS dat a B** Payola | Micah Goins | Cached | `aints-dat-a-b-payola.svg` (ESPN default logo 19) |
 | Drake It To You Make It | James D | Cached | `drake-it-to-you-make-it.svg` (espncdn Disney pack) |
 | -Sutt-Dog - | Chris Sutton | Cached | `sutt-dog.svg` (espncdn Crazy Helmets pack) |
-| Lock in fn | Reggie B | Fallback (initials `LI`) | Mystique API returned 401 (`Credentials are missing`). Source: `https://mystique-api.fantasy.espn.com/apis/v1/domains/lm/images/d80e7c60-9e47-11f0-b1c3-bf61c28fbeb9` |
+| Lock in fn | Reggie B | Cached | `lock-in-fn.png` (approved face crop; Mystique API 401 so this is the local replacement, not a CDN hotlink) |
 | Team Robottom | Chad Robottom | Cached | `team-robottom.svg` (ESPN default logo 6) |
 | Pimp Trick Gangsta Clique | Bernard Ford | Fallback (initials `PT`) | Photobucket returned a watermarked "Groups by photobucket" overlay, not a clean logo. Do not hotlink. Source: `https://i925.photobucket.com/albums/ad94/tjondo/Presentation1.jpg` |
 | Jackmerius Tacktheritrix | Brandon Sims | Cached | `jackmerius-tacktheritrix.png` (espncdn Guardians shield) |
