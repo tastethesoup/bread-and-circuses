@@ -66,12 +66,11 @@ If the workflow’s deploy job fails with a Pages permissions error, the Source 
 - Posts live in `src/posts/` as Markdown.
 - The home page lists posts, newest first.
 - Each post uses `src/_includes/layouts/post.njk`.
-- LOG newsletter section headings (`## The games`, `## Power rankings`, and so on) render as bold, underlined text.
-- Do not use em dashes in posts. Prefer periods, commas, parentheses, or a new sentence. Score lines may use a simple hyphen (`142.8 - 117.3`).
+- Do not use em dashes in posts. Prefer periods, commas, parentheses, a hyphen, or a new sentence.
 
-`src/posts/2026-09-16-log-week-1.md` is a sample LOG Week 1 newsletter for the 10-team League of Ordinary Gentlemen (ESPN leagueId 856379). It is laid out for phones: stacked matchup cards, sticky section nav, blotter tickets, a pull quote, and pick/result chips. Scores and roasts are illustrative. Team names, owners, and logos come from the live roster map.
+`src/posts/2026-09-16-log-week-1.md` is the live LOG Week 1 newsletter for the 10-team League of Ordinary Gentlemen (ESPN leagueId 856379). It renders as a phone-column newspaper (cream paper, Instrument Serif / Newsreader / Courier Prime) from `log:` front matter. Copy and scores come from the sent Week 1 LOG. Team names come from the ESPN roster map in `src/_data/logTeams.json`.
 
-Author notes for weekly LOG posts (front matter, pull quotes, logos, chips) are in [docs/log.md](docs/log.md). Cached logos live in `src/assets/logos/` with a short README there (Pimp Trick Gangsta Clique still falls back to initials).
+Author notes for weekly LOG posts are in [docs/log.md](docs/log.md). A blank Design Components week template is parked at [docs/log-week-template.dc.html](docs/log-week-template.dc.html) for composing future weeks. Cached logos live in `src/assets/logos/` with a short README there.
 
 An Atom feed is at `/feed.xml`.
 

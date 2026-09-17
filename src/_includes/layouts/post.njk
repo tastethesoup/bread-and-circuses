@@ -1,7 +1,29 @@
 ---
 layout: layouts/base.njk
 ---
-<article class="post{% if log %} log-post{% endif %}">
+{% if log %}
+<article class="log-paper">
+  <div class="log-masthead">
+    {% include "log/hero.njk" %}
+    {% include "log/nav.njk" %}
+  </div>
+  {% set quote = pullQuote or log.pullQuote or log.lede %}
+  {% if quote or content %}
+  <div class="log-lede">
+    {% if quote %}
+    <p class="log-lede__display">{{ quote }}</p>
+    {% endif %}
+    {% if content %}
+    <div class="log-lede__body">
+      {{ content | safe }}
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% include "log/sections.njk" %}
+</article>
+{% else %}
+<article class="post">
   <header class="post-header">
     <h1>{{ title }}</h1>
     <p class="post-meta">
@@ -10,22 +32,14 @@ layout: layouts/base.njk
         <span class="post-kicker">{{ description }}</span>
       {% endif %}
     </p>
-    {% if log %}
-      {% include "log/hero.njk" %}
-    {% endif %}
   </header>
-  {% if log %}
-    {% include "log/nav.njk" %}
-  {% endif %}
-  {% set quote = pullQuote or (log and log.pullQuote) %}
+  {% set quote = pullQuote %}
   {% if quote %}
     <blockquote class="pull-quote">{{ quote }}</blockquote>
   {% endif %}
   <div class="post-body">
     {{ content | safe }}
   </div>
-  {% if log %}
-    {% include "log/sections.njk" %}
-  {% endif %}
 </article>
 <p class="back-link"><a href="/">All posts</a></p>
+{% endif %}

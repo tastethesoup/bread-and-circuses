@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="{{ site.language }}">
+<html lang="{{ site.language }}"{% if log %} class="log-page"{% endif %}>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if title %}{{ title }} · {% endif %}{{ site.title }}</title>
     <meta name="description" content="{{ description or site.description }}">
+    {% if log %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    {% endif %}
     <link rel="stylesheet" href="/css/style.css">
     <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="/feed.xml">
   </head>
-  <body>
+  <body{% if log %} class="log-page"{% endif %}>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <p class="site-title"><a href="/">{{ site.title }}</a></p>

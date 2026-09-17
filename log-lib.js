@@ -199,3 +199,61 @@ export function renderPullQuote(text) {
   }
   return `<blockquote class="pull-quote">${escapeHtml(body)}</blockquote>`;
 }
+
+const WEEK_WORDS = [
+  "",
+  "One",
+  "Two",
+  "Three",
+  "Four",
+  "Five",
+  "Six",
+  "Seven",
+  "Eight",
+  "Nine",
+  "Ten",
+  "Eleven",
+  "Twelve",
+  "Thirteen",
+  "Fourteen",
+  "Fifteen",
+  "Sixteen",
+  "Seventeen",
+  "Eighteen",
+];
+
+export function weekWord(n) {
+  const i = Number(n);
+  return WEEK_WORDS[i] || String(n ?? "");
+}
+
+export function formatScore(value) {
+  if (value == null || value === "") {
+    return "";
+  }
+  const n = Number(value);
+  if (Number.isNaN(n)) {
+    return String(value);
+  }
+  return n.toFixed(2);
+}
+
+export function formatShortDate(dateObj) {
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  }).format(dateObj);
+}
+
+export function movementTone(move) {
+  const s = String(move ?? "").trim();
+  if (s.includes("▲") || /^up/i.test(s)) {
+    return "up";
+  }
+  if (s.includes("▼") || /^down/i.test(s)) {
+    return "down";
+  }
+  return "flat";
+}
