@@ -1,15 +1,27 @@
 import { HtmlBasePlugin } from "@11ty/eleventy";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import site from "./src/_data/site.json" with { type: "json" };
+import {
+  chipMeta,
+  pickResult,
+  renderChip,
+  renderPullQuote,
+  resolveTeam,
+  tallyRecord,
+  winnerSide,
+} from "./log-lib.js";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default function (eleventyConfig) {
+  eleventyConfig.ignores.add("src/assets/**/*.md");
   eleventyConfig.addPassthroughCopy({
     "src/css": "css",
+    "src/assets": "assets",
     "src/.nojekyll": ".nojekyll",
     "src/CNAME": "CNAME",
   });
   eleventyConfig.addWatchTarget("src/css/");
+  eleventyConfig.addWatchTarget("src/assets/");
 
   eleventyConfig.addPlugin(HtmlBasePlugin);
 
@@ -45,6 +57,17 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {
     return new Date(dateObj).toISOString().slice(0, 10);
   });
+
+  eleventyConfig.addFilter("logTeam", (ref) => resolveTeam(ref));
+  eleventyConfig.addFilter("logChip", (kind) => chipMeta(kind));
+  eleventyConfig.addFilter("logWinner", (game) => winnerSide(game));
+  eleventyConfig.addFilter("logPickResult", (game) => pickResult(game));
+  eleventyConfig.addFilter("logRecord", (games) => tallyRecord(games));
+
+  eleventyConfig.addShortcode("logChip", (kind) => renderChip(kind));
+  eleventyConfig.addPairedShortcode("pullQuote", (content) =>
+    renderPullQuote(content),
+  );
 }
 
 export const config = {

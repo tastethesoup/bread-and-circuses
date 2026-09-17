@@ -69,7 +69,9 @@ If the workflow’s deploy job fails with a Pages permissions error, the Source 
 - LOG newsletter section headings (`## The games`, `## Power rankings`, and so on) render as bold, underlined text.
 - Do not use em dashes in posts. Prefer periods, commas, parentheses, or a new sentence. Score lines may use a simple hyphen (`142.8 - 117.3`).
 
-`src/posts/2026-09-16-log-week-1.md` is a sample LOG Week 1 newsletter (League of Ordinary Gentlemen). Replace the sample scores and teams with the live league notes when you have them.
+`src/posts/2026-09-16-log-week-1.md` is a sample LOG Week 1 newsletter (League of Ordinary Gentlemen). It is laid out for phones: stacked matchup cards, sticky section nav, blotter tickets, a pull quote, and pick/result chips. Replace the sample scores and teams with the live league notes when you have them.
+
+Author notes for weekly LOG posts (front matter, pull quotes, logos, chips) are in [docs/log.md](docs/log.md). Team marks live in `src/assets/logos/` with a short README there.
 
 An Atom feed is at `/feed.xml`.
 

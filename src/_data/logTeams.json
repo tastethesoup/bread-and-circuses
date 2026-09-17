@@ -1,0 +1,74 @@
+{
+  "paper-lions": {
+    "name": "Paper Lions",
+    "abbr": "PL",
+    "color": "#c45c26",
+    "logo": "/assets/logos/paper-lions.svg"
+  },
+  "idle-hands": {
+    "name": "Idle Hands",
+    "abbr": "IH",
+    "color": "#3d5a80",
+    "logo": "/assets/logos/idle-hands.svg"
+  },
+  "sunday-gentlemen": {
+    "name": "Sunday Gentlemen",
+    "abbr": "SG",
+    "color": "#2c2a28",
+    "logo": "/assets/logos/sunday-gentlemen.svg"
+  },
+  "the-commons": {
+    "name": "The Commons",
+    "abbr": "TC",
+    "color": "#2f5d50",
+    "logo": "/assets/logos/the-commons.svg"
+  },
+  "bread-line": {
+    "name": "Bread Line",
+    "abbr": "BL",
+    "color": "#a67c52",
+    "logo": "/assets/logos/bread-line.svg"
+  },
+  "quiet-luxury": {
+    "name": "Quiet Luxury",
+    "abbr": "QL",
+    "color": "#6b6560",
+    "logo": "/assets/logos/quiet-luxury.svg"
+  },
+  "circus-maximus": {
+    "name": "Circus Maximus",
+    "abbr": "CM",
+    "color": "#7a1f1f",
+    "logo": "/assets/logos/circus-maximus.svg"
+  },
+  "false-nine": {
+    "name": "False Nine",
+    "abbr": "F9",
+    "color": "#1f6f6a",
+    "logo": "/assets/logos/false-nine.svg"
+  },
+  "second-breakfast": {
+    "name": "Second Breakfast",
+    "abbr": "SB",
+    "color": "#b5812e",
+    "logo": "/assets/logos/second-breakfast.svg"
+  },
+  "harmless-fun": {
+    "name": "Harmless Fun",
+    "abbr": "HF",
+    "color": "#5b4b8a",
+    "logo": "/assets/logos/harmless-fun.svg"
+  },
+  "the-backbench": {
+    "name": "The Backbench",
+    "abbr": "TB",
+    "color": "#243a5e",
+    "logo": "/assets/logos/the-backbench.svg"
+  },
+  "municipal-waste": {
+    "name": "Municipal Waste",
+    "abbr": "MW",
+    "color": "#5c6840",
+    "logo": "/assets/logos/municipal-waste.svg"
+  }
+}

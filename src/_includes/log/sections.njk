@@ -1,0 +1,73 @@
+{% from "log/macros.njk" import matchupCard, blotterTicket, rankingRow %}
+
+{% if log.games %}
+<section class="log-section" id="games">
+  <h2>The games</h2>
+  {% if log.gamesIntro %}
+  <p>{{ log.gamesIntro }}</p>
+  {% endif %}
+  <div class="matchup-list">
+    {% for game in log.games %}
+      {{ matchupCard(game, "result") }}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if log.rankings %}
+<section class="log-section" id="rankings">
+  <h2>Power rankings</h2>
+  {% if log.rankingsIntro %}
+  <p>{{ log.rankingsIntro }}</p>
+  {% endif %}
+  <ol class="log-rankings">
+    {% for entry in log.rankings %}
+      {{ rankingRow(entry, loop.index) }}
+    {% endfor %}
+  </ol>
+  {% if log.rankingsOutro %}
+  <p>{{ log.rankingsOutro }}</p>
+  {% endif %}
+</section>
+{% endif %}
+
+{% if log.blotter %}
+<section class="log-section" id="blotter">
+  <h2>Crime blotter</h2>
+  {% if log.blotterIntro %}
+  <p>{{ log.blotterIntro }}</p>
+  {% endif %}
+  <div class="log-tickets">
+    {% for item in log.blotter %}
+      {{ blotterTicket(item) }}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if log.slate %}
+<section class="log-section" id="next-week">
+  <h2>Week slate</h2>
+  {% if log.slateIntro %}
+  <p>{{ log.slateIntro }}</p>
+  {% endif %}
+  <div class="matchup-list">
+    {% for game in log.slate %}
+      {{ matchupCard(game, "preview") }}
+    {% endfor %}
+  </div>
+  {% if log.slateOutro %}
+  <p>{{ log.slateOutro }}</p>
+  {% endif %}
+</section>
+{% endif %}
+
+{% if log.gotw %}
+<section class="log-section" id="gotw">
+  <h2>Game of the Week</h2>
+  {{ matchupCard(log.gotw, "featured") }}
+  {% if log.gotw.blurb %}
+  <p>{{ log.gotw.blurb }}</p>
+  {% endif %}
+</section>
+{% endif %}

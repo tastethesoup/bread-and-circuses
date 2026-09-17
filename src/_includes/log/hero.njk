@@ -1,0 +1,12 @@
+{% set computed = log.games | logRecord %}
+{% set recordLabel = log.record or computed.label %}
+
+<div class="log-hero">
+  <p class="log-hero__week">
+    <span class="log-hero__kicker">LOG</span>
+    <span class="log-hero__num">Week {{ log.week }}</span>
+  </p>
+  <p class="log-hero__record" title="Pick record {{ recordLabel }}">
+    <span class="log-chip chip--pick">Picks {{ recordLabel }}</span>
+  </p>
+</div>
