@@ -1,0 +1,110 @@
+{% macro chip(kind) %}
+{%- set meta = kind | logChip -%}
+{%- if meta -%}
+<span class="log-chip {{ meta.className }}">{{ meta.label }}</span>
+{%- endif -%}
+{% endmacro %}
+
+{% macro avatar(ref, size) %}
+{%- set team = ref | logTeam -%}
+{%- set px = size or 40 -%}
+<span class="team-avatar" title="{{ team.name }}">
+  {% if team.logo %}
+  <img
+    class="team-avatar__img"
+    src="{{ team.logo }}"
+    alt=""
+    width="{{ px }}"
+    height="{{ px }}"
+    decoding="async"
+    onerror="this.style.display='none'; var fallback = this.nextElementSibling; if (fallback) fallback.hidden = false;"
+  >
+  <span class="team-avatar__fallback" hidden style="--team-color: {{ team.color }}" aria-hidden="true">{{ team.abbr }}</span>
+  {% else %}
+  <span class="team-avatar__fallback" style="--team-color: {{ team.color }}" aria-hidden="true">{{ team.abbr }}</span>
+  {% endif %}
+</span>
+{% endmacro %}
+
+{% macro matchupCard(game, mode) %}
+{%- set home = game.home | logTeam -%}
+{%- set away = game.away | logTeam -%}
+{%- set winner = game | logWinner -%}
+{%- set result = game | logPickResult -%}
+{%- set preview = mode == "preview" or mode == "featured" -%}
+{%- set featured = mode == "featured" or game.gotw -%}
+<article class="matchup-card{% if featured %} matchup-card--gotw{% endif %}{% if preview %} matchup-card--preview{% endif %}">
+  <div class="matchup-teams">
+    <div class="matchup-team{% if winner == 'home' %} matchup-team--winner{% endif %}">
+      {{ avatar(game.home) }}
+      <div class="matchup-team__copy">
+        <span class="matchup-team__name">{{ home.name }}</span>
+        {% if preview %}
+          <span class="matchup-team__meta">
+            {% if game.pick and (game.pick | logTeam).slug == home.slug %}{{ chip("PICK") }}{% endif %}
+          </span>
+        {% else %}
+          <div class="matchup-team__scoreline">
+            <span class="matchup-team__score">{{ game.homeScore }}</span>
+            {% if winner == "home" %}{{ chip("W") }}{% elseif winner == "away" %}{{ chip("L") }}{% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="matchup-team{% if winner == 'away' %} matchup-team--winner{% endif %}">
+      {{ avatar(game.away) }}
+      <div class="matchup-team__copy">
+        <span class="matchup-team__name">{{ away.name }}</span>
+        {% if preview %}
+          <span class="matchup-team__meta">
+            {% if game.pick and (game.pick | logTeam).slug == away.slug %}{{ chip("PICK") }}{% endif %}
+          </span>
+        {% else %}
+          <div class="matchup-team__scoreline">
+            <span class="matchup-team__score">{{ game.awayScore }}</span>
+            {% if winner == "away" %}{{ chip("W") }}{% elseif winner == "home" %}{{ chip("L") }}{% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% if game.roast %}
+  <p class="matchup-roast">{{ game.roast }}</p>
+  {% endif %}
+  <div class="matchup-chips">
+    {% if preview %}
+      {% if not game.pick %}{{ chip("NO PICK") }}{% endif %}
+      {% if game.gotw %}{{ chip("GOTW") }}{% endif %}
+    {% else %}
+      {{ chip(result) }}
+      {% if game.gotw %}{{ chip("GOTW") }}{% endif %}
+    {% endif %}
+  </div>
+</article>
+{% endmacro %}
+
+{% macro blotterTicket(item) %}
+{%- set team = item.team | logTeam -%}
+<article class="log-ticket">
+  <div class="log-ticket__stub">
+    {{ avatar(item.team, 36) }}
+    <span class="log-ticket__team">{{ team.name }}</span>
+  </div>
+  <p class="log-ticket__charge">{{ item.charge }}</p>
+  {% if item.evidence %}
+  <p class="log-ticket__evidence">{{ item.evidence }}</p>
+  {% endif %}
+</article>
+{% endmacro %}
+
+{% macro rankingRow(entry, index) %}
+{%- set team = entry.team | logTeam -%}
+<li class="log-rank">
+  <span class="log-rank__n">{{ index }}</span>
+  {{ avatar(entry.team, 36) }}
+  <span class="log-rank__name">{{ team.name }}</span>
+  {% if entry.record %}
+  <span class="log-rank__record">{{ entry.record }}</span>
+  {% endif %}
+</li>
+{% endmacro %}

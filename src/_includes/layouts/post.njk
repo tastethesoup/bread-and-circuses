@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.njk
 ---
-<article class="post">
+<article class="post{% if log %} log-post{% endif %}">
   <header class="post-header">
     <h1>{{ title }}</h1>
     <p class="post-meta">
@@ -10,9 +10,22 @@ layout: layouts/base.njk
         <span class="post-kicker">{{ description }}</span>
       {% endif %}
     </p>
+    {% if log %}
+      {% include "log/hero.njk" %}
+    {% endif %}
   </header>
+  {% if log %}
+    {% include "log/nav.njk" %}
+  {% endif %}
+  {% set quote = pullQuote or (log and log.pullQuote) %}
+  {% if quote %}
+    <blockquote class="pull-quote">{{ quote }}</blockquote>
+  {% endif %}
   <div class="post-body">
     {{ content | safe }}
   </div>
+  {% if log %}
+    {% include "log/sections.njk" %}
+  {% endif %}
 </article>
 <p class="back-link"><a href="/">All posts</a></p>

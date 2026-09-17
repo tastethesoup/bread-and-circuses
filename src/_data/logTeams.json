@@ -1,0 +1,71 @@
+{
+  "prestige-worldwide": {
+    "name": "Prestige Worldwide",
+    "owner": "Sean Lockovich",
+    "abbr": "PW",
+    "color": "#2a6b73",
+    "logo": "/assets/logos/prestige-worldwide.jpg"
+  },
+  "ceedeez-nutz": {
+    "name": "CeeDeez Nutz",
+    "owner": "Eric Bunn",
+    "abbr": "CN",
+    "color": "#331c07",
+    "logo": "/assets/logos/ceedeez-nutz.svg"
+  },
+  "size-matters": {
+    "name": "Size Matters",
+    "owner": "Nick Harper",
+    "abbr": "SM",
+    "color": "#2f5d50",
+    "logo": "/assets/logos/size-matters.svg"
+  },
+  "aints-dat-a-b-payola": {
+    "name": "AINTS dat a B** Payola",
+    "owner": "Micah Goins",
+    "abbr": "AD",
+    "color": "#3d6b4a",
+    "logo": "/assets/logos/aints-dat-a-b-payola.svg"
+  },
+  "drake-it-to-you-make-it": {
+    "name": "Drake It To You Make It",
+    "owner": "James D",
+    "abbr": "DI",
+    "color": "#ae6219",
+    "logo": "/assets/logos/drake-it-to-you-make-it.svg"
+  },
+  "sutt-dog": {
+    "name": "-Sutt-Dog -",
+    "owner": "Chris Sutton",
+    "abbr": "SD",
+    "color": "#0b76b2",
+    "logo": "/assets/logos/sutt-dog.svg"
+  },
+  "lock-in-fn": {
+    "name": "Lock in fn",
+    "owner": "Reggie B",
+    "abbr": "LI",
+    "color": "#5b4b8a",
+    "logo": "/assets/logos/lock-in-fn.png"
+  },
+  "team-robottom": {
+    "name": "Team Robottom",
+    "owner": "Chad Robottom",
+    "abbr": "TR",
+    "color": "#1b8842",
+    "logo": "/assets/logos/team-robottom.svg"
+  },
+  "pimp-trick-gangsta-clique": {
+    "name": "Pimp Trick Gangsta Clique",
+    "owner": "Bernard Ford",
+    "abbr": "PT",
+    "color": "#5b2a7a"
+  },
+  "jackmerius-tacktheritrix": {
+    "name": "Jackmerius Tacktheritrix",
+    "owner": "Brandon Sims",
+    "abbr": "JT",
+    "color": "#1a1a1a",
+    "logo": "/assets/logos/jackmerius-tacktheritrix.png"
+  }
+}

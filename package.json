@@ -5,10 +5,11 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "npx @11ty/eleventy",
-    "build-ghpages": "npx @11ty/eleventy --pathprefix=/bread-and-circuses/",
+    "build": "rm -rf _site && npx @11ty/eleventy",
+    "build-ghpages": "rm -rf _site && npx @11ty/eleventy --pathprefix=/bread-and-circuses/",
     "start": "npx @11ty/eleventy --serve",
-    "start-ghpages": "npx @11ty/eleventy --pathprefix=/bread-and-circuses/ --serve"
+    "start-ghpages": "npx @11ty/eleventy --pathprefix=/bread-and-circuses/ --serve",
+    "test": "npm run build && node scripts/check-log.mjs"
   },
   "engines": {
     "node": ">=18"
