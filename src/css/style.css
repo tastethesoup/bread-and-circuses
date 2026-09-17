@@ -267,10 +267,10 @@ main {
   flex-wrap: wrap;
   gap: 0.4rem;
   margin: 1rem -0.15rem 1.15rem;
-  padding: 0.55rem 0.15rem;
-  background: color-mix(in srgb, var(--bg) 92%, transparent);
-  backdrop-filter: blur(10px);
+  padding: 0.55rem 0.15rem 0.7rem;
+  background: var(--bg);
   border-bottom: 1px solid var(--rule);
+  box-shadow: 0 10px 12px -12px var(--ink);
 }
 
 .log-nav a {
@@ -335,6 +335,12 @@ main {
   background: var(--accent);
   color: var(--bg);
   border-color: var(--accent);
+}
+
+.chip--w,
+.chip--l {
+  min-width: 1.65rem;
+  padding-inline: 0.35rem;
 }
 
 .chip--w {
@@ -413,9 +419,12 @@ main {
 .matchup-card,
 .log-ticket {
   max-width: 100%;
-  overflow-x: hidden;
   background: var(--paper);
   border: 1px solid var(--ink);
+}
+
+.matchup-card {
+  overflow-x: hidden;
 }
 
 .matchup-card {
@@ -559,17 +568,19 @@ main {
 
 .log-section {
   margin-top: 0.25rem;
+  scroll-margin-top: 4.5rem;
 }
 
 @media (max-width: 40rem) {
   html {
     font-size: 106.25%;
-    scroll-padding-top: 6.75rem;
+    scroll-padding-top: 8.5rem;
   }
 
   .post-body h2,
+  .log-section,
   .log-section h2 {
-    scroll-margin-top: 6.75rem;
+    scroll-margin-top: 8.5rem;
   }
 
   .site-header,
@@ -593,29 +604,7 @@ main {
   }
 
   .matchup-team {
-    grid-template-columns: 2.5rem minmax(0, 1fr) auto;
-    grid-template-areas:
-      "logo name score"
-      "logo name chip";
-  }
-
-  .matchup-team .team-avatar {
-    grid-area: logo;
-  }
-
-  .matchup-team__name {
-    grid-area: name;
-  }
-
-  .matchup-team__score,
-  .matchup-team__meta {
-    grid-area: score;
-    justify-self: end;
-  }
-
-  .matchup-team .log-chip {
-    grid-area: chip;
-    justify-self: end;
+    grid-template-columns: 2.5rem minmax(0, 1fr) auto auto;
   }
 }
 
