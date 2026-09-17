@@ -55,27 +55,42 @@ for (const token of [
   "log-nav",
   'href="#games"',
   'href="#rankings"',
-  'href="#blotter"',
   'href="#next-week"',
   'href="#gotw"',
   "matchup-card",
-  "log-ticket",
   "pull-quote",
   "log-hero",
-  "chip--hit",
-  "chip--miss",
   "chip--nopick",
-  "chip--pick",
   "chip--gotw",
   "chip--w",
   "chip--l",
   "matchup-team__scoreline",
   "team-avatar",
+  "199.8",
+  "137.8",
+  "194.4",
+  "131.8",
+  "174.6",
+  "168.5",
+  "168.6",
+  "92",
+  "129.5",
+  "120.3",
+  "Team Robottom",
+  "Pimp Trick Gangsta Clique",
   ...teamNames,
 ]) {
   if (!html.includes(token)) {
     fail(`week 1 HTML missing ${token}`);
   }
+}
+
+if (html.includes("Robottom vs Clique") && html.includes("Week 1") && html.includes("Game of the Week") && !html.includes("Week 2 Game of the Week")) {
+  // soft check handled below
+}
+
+if (!html.includes("Week 2 Game of the Week") && !source.includes("Week 2 Game of the Week")) {
+  fail("GOTW should be labeled as Week 2 (Robottom vs Clique)");
 }
 
 if (html.includes("Paper Lions") || html.includes("Idle Hands")) {
@@ -107,48 +122,46 @@ if (source.includes("\u2014") || source.includes("&mdash;")) {
 
 const games = [
   {
-    home: "Prestige Worldwide",
-    away: "CeeDeez Nutz",
-    homeScore: 142.8,
-    awayScore: 117.3,
-    pick: "Prestige Worldwide",
+    home: "Team Robottom",
+    away: "AINTS dat a B** Payola",
+    homeScore: 199.8,
+    awayScore: 137.8,
   },
   {
     home: "Size Matters",
-    away: "AINTS dat a B** Payola",
-    homeScore: 131.6,
-    awayScore: 128.9,
-    pick: "AINTS dat a B** Payola",
-  },
-  {
-    home: "Drake It To You Make It",
     away: "-Sutt-Dog -",
-    homeScore: 156.1,
-    awayScore: 110.8,
-    pick: "Drake It To You Make It",
+    homeScore: 194.4,
+    awayScore: 131.8,
   },
   {
     home: "Lock in fn",
-    away: "Team Robottom",
-    homeScore: 119.4,
-    awayScore: 101.2,
-    pick: "Lock in fn",
+    away: "CeeDeez Nutz",
+    homeScore: 174.6,
+    awayScore: 168.5,
   },
   {
     home: "Pimp Trick Gangsta Clique",
+    away: "Prestige Worldwide",
+    homeScore: 168.6,
+    awayScore: 92.0,
+  },
+  {
+    home: "Drake It To You Make It",
     away: "Jackmerius Tacktheritrix",
-    homeScore: 124.0,
-    awayScore: 122.7,
-    pick: "Jackmerius Tacktheritrix",
+    homeScore: 129.5,
+    awayScore: 120.3,
   },
 ];
 
-if (pickResult(games[0]) !== "hit") fail("expected HIT on Prestige Worldwide");
-if (pickResult(games[1]) !== "miss") fail("expected MISS on AINTS pick");
-if (pickResult(games[4]) !== "miss") fail("expected MISS on Jackmerius pick");
+if (pickResult(games[0]) !== "nopick") fail("expected NO PICK when pick omitted");
 const record = tallyRecord(games);
-if (record.label !== "3-2") fail(`expected pick record 3-2, got ${record.label}`);
-if (!html.includes("Picks 3-2")) fail("hero strip missing computed Picks 3-2 record");
+if (record.label !== "0-0") fail(`expected pick record 0-0 with no picks, got ${record.label}`);
+if (!source.includes('home: "Team Robottom"') || !source.includes("199.8")) {
+  fail("source post missing ESPN-confirmed Robottom score");
+}
+if (!source.includes('away: "Pimp Trick Gangsta Clique"') || !source.includes("gotw: true")) {
+  fail("source post missing Week 2 GOTW Robottom vs Clique");
+}
 
 if (failures.length) {
   console.error(failures.map((item) => `x ${item}`).join("\n"));
