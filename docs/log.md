@@ -78,7 +78,7 @@ It renders larger, italic, with a left bar. It is meant to break up the cold ope
 
 ## Matchup cards
 
-Each `log.games` item is one stacked card: logos, names, scores, W/L chips, one roast line, and a pick-result chip (HIT, MISS, or NO PICK). Winner is the higher score.
+Each `log.games` item is one stacked card: logos, names, a score line with a separate W/L pill, one roast line, and a pick-result chip (HIT, MISS, or NO PICK). Winner is the higher score. Scores sit on their own row under the team name, not beside it.
 
 `log.slate` items are the same card without scores. Put `pick:` on the team you like. Add `gotw: true` for the Game of the Week chip. Cards are a single column. They do not scroll sideways.
 
@@ -110,4 +110,4 @@ If the file is missing, the path is wrong, `logo` is omitted, or the image 404s,
 
 ## Sticky nav
 
-When `log` has games, rankings, blotter, slate, or GOTW, a compact nav sticks to the top of the viewport: Games, Rankings, Blotter, Next week, GOTW. Targets wrap on a phone. Anchors use `#games`, `#rankings`, `#blotter`, `#next-week`, `#gotw`.
+When `log` has games, rankings, blotter, slate, or GOTW, a compact chrome bar sticks to the top of the viewport: Games, Rankings, Blotter, Next week, GOTW. It is one slim bar (smaller type, tighter padding, light background, bottom border), not a second row of large tap-target pills. Anchors use `#games`, `#rankings`, `#blotter`, `#next-week`, `#gotw`.

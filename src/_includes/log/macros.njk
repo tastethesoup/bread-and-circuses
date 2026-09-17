@@ -37,27 +37,35 @@
   <div class="matchup-teams">
     <div class="matchup-team{% if winner == 'home' %} matchup-team--winner{% endif %}">
       {{ avatar(game.home) }}
-      <span class="matchup-team__name">{{ home.name }}</span>
-      {% if preview %}
-        <span class="matchup-team__meta">
-          {% if game.pick and (game.pick | logTeam).slug == home.slug %}{{ chip("PICK") }}{% endif %}
-        </span>
-      {% else %}
-        <span class="matchup-team__score">{{ game.homeScore }}</span>
-        {% if winner == "home" %}{{ chip("W") }}{% elseif winner == "away" %}{{ chip("L") }}{% endif %}
-      {% endif %}
+      <div class="matchup-team__copy">
+        <span class="matchup-team__name">{{ home.name }}</span>
+        {% if preview %}
+          <span class="matchup-team__meta">
+            {% if game.pick and (game.pick | logTeam).slug == home.slug %}{{ chip("PICK") }}{% endif %}
+          </span>
+        {% else %}
+          <div class="matchup-team__scoreline">
+            <span class="matchup-team__score">{{ game.homeScore }}</span>
+            {% if winner == "home" %}{{ chip("W") }}{% elseif winner == "away" %}{{ chip("L") }}{% endif %}
+          </div>
+        {% endif %}
+      </div>
     </div>
     <div class="matchup-team{% if winner == 'away' %} matchup-team--winner{% endif %}">
       {{ avatar(game.away) }}
-      <span class="matchup-team__name">{{ away.name }}</span>
-      {% if preview %}
-        <span class="matchup-team__meta">
-          {% if game.pick and (game.pick | logTeam).slug == away.slug %}{{ chip("PICK") }}{% endif %}
-        </span>
-      {% else %}
-        <span class="matchup-team__score">{{ game.awayScore }}</span>
-        {% if winner == "away" %}{{ chip("W") }}{% elseif winner == "home" %}{{ chip("L") }}{% endif %}
-      {% endif %}
+      <div class="matchup-team__copy">
+        <span class="matchup-team__name">{{ away.name }}</span>
+        {% if preview %}
+          <span class="matchup-team__meta">
+            {% if game.pick and (game.pick | logTeam).slug == away.slug %}{{ chip("PICK") }}{% endif %}
+          </span>
+        {% else %}
+          <div class="matchup-team__scoreline">
+            <span class="matchup-team__score">{{ game.awayScore }}</span>
+            {% if winner == "away" %}{{ chip("W") }}{% elseif winner == "home" %}{{ chip("L") }}{% endif %}
+          </div>
+        {% endif %}
+      </div>
     </div>
   </div>
   {% if game.roast %}

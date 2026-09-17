@@ -68,6 +68,7 @@ for (const token of [
   "chip--gotw",
   "chip--w",
   "chip--l",
+  "matchup-team__scoreline",
   "team-avatar",
   ...teamNames,
 ]) {
