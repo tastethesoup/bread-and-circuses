@@ -3,11 +3,15 @@ import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import site from "./src/_data/site.json" with { type: "json" };
 import {
   chipMeta,
+  formatScore,
+  formatShortDate,
+  movementTone,
   pickResult,
   renderChip,
   renderPullQuote,
   resolveTeam,
   tallyRecord,
+  weekWord,
   winnerSide,
 } from "./log-lib.js";
 
@@ -53,6 +57,11 @@ export default function (eleventyConfig) {
       timeZone: "UTC",
     }).format(dateObj);
   });
+
+  eleventyConfig.addFilter("shortDate", (dateObj) => formatShortDate(dateObj));
+  eleventyConfig.addFilter("weekWord", (n) => weekWord(n));
+  eleventyConfig.addFilter("logScore", (value) => formatScore(value));
+  eleventyConfig.addFilter("logMove", (move) => movementTone(move));
 
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {
     return new Date(dateObj).toISOString().slice(0, 10);

@@ -1,3 +1,8 @@
+{% set computed = log.games | logRecord %}
+{% set recordLabel = log.record or computed.label %}
+{% set nextWeek = log.nextWeek or (log.week + 1) %}
+{% set nextLabel = log.nextLabel or ("Week " + nextWeek) %}
+
 <nav class="log-nav" aria-label="Newsletter sections">
   {% if log.games %}
   <a href="#games">Games</a>
@@ -9,9 +14,10 @@
   <a href="#blotter">Blotter</a>
   {% endif %}
   {% if log.slate %}
-  <a href="#next-week">Next week</a>
+  <a href="#next">{{ nextLabel }}</a>
   {% endif %}
   {% if log.gotw %}
   <a href="#gotw">GOTW</a>
   {% endif %}
+  <span class="log-nav__record">Picks {{ recordLabel }}</span>
 </nav>

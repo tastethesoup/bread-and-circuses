@@ -1,12 +1,13 @@
 {% set computed = log.games | logRecord %}
 {% set recordLabel = log.record or computed.label %}
+{% set weekName = log.weekWord or (log.week | weekWord) %}
 
-<div class="log-hero">
-  <p class="log-hero__week">
-    <span class="log-hero__kicker">LOG</span>
-    <span class="log-hero__num">Week {{ log.week }}</span>
-  </p>
-  <p class="log-hero__record" title="Pick record {{ recordLabel }}">
-    <span class="log-chip chip--pick">Picks {{ recordLabel }}</span>
-  </p>
-</div>
+<p class="log-masthead__eyebrow">
+  <span>{{ site.title }}</span>
+  <time datetime="{{ page.date | htmlDateString }}">{{ page.date | shortDate }}</time>
+</p>
+<h1 class="log-masthead__title">LOG<br>Week {{ weekName }}</h1>
+{% set kicker = log.kicker or description %}
+{% if kicker %}
+<p class="log-masthead__kicker">{{ kicker }}</p>
+{% endif %}

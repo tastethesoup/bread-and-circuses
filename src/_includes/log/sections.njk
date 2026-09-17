@@ -1,14 +1,14 @@
-{% from "log/macros.njk" import matchupCard, blotterTicket, rankingRow %}
+{% from "log/macros.njk" import scoreStack, rankingRow, blotterItem, slateCard %}
+{% set computed = log.games | logRecord %}
+{% set recordLabel = log.record or computed.label %}
+{% set nextWeek = log.nextWeek or (log.week + 1) %}
 
 {% if log.games %}
 <section class="log-section" id="games">
-  <h2>The games</h2>
-  {% if log.gamesIntro %}
-  <p>{{ log.gamesIntro }}</p>
-  {% endif %}
-  <div class="matchup-list">
+  <h2 class="log-section__title">The games</h2>
+  <div class="log-games">
     {% for game in log.games %}
-      {{ matchupCard(game, "result") }}
+      {{ scoreStack(game) }}
     {% endfor %}
   </div>
 </section>
@@ -16,58 +16,66 @@
 
 {% if log.rankings %}
 <section class="log-section" id="rankings">
-  <h2>Power rankings</h2>
-  {% if log.rankingsIntro %}
-  <p>{{ log.rankingsIntro }}</p>
-  {% endif %}
-  <ol class="log-rankings">
+  <div class="log-section__heading">
+    <h2 class="log-section__title">Power rankings</h2>
+    <span class="log-section__aside">{{ log.rankingsKicker or ("After Week " + log.week) }}</span>
+  </div>
+  <div class="log-rankings">
     {% for entry in log.rankings %}
       {{ rankingRow(entry, loop.index) }}
     {% endfor %}
-  </ol>
-  {% if log.rankingsOutro %}
-  <p>{{ log.rankingsOutro }}</p>
+  </div>
+  {% if log.rankingsNote %}
+  <p class="log-section__note">{{ log.rankingsNote }}</p>
   {% endif %}
 </section>
 {% endif %}
 
 {% if log.blotter %}
 <section class="log-section" id="blotter">
-  <h2>Crime blotter</h2>
-  {% if log.blotterIntro %}
-  <p>{{ log.blotterIntro }}</p>
-  {% endif %}
-  <div class="log-tickets">
+  <h2 class="log-section__title">Crime blotter</h2>
+  <div class="log-blotters">
     {% for item in log.blotter %}
-      {{ blotterTicket(item) }}
+      {{ blotterItem(item, loop.index) }}
     {% endfor %}
   </div>
 </section>
 {% endif %}
 
 {% if log.slate %}
-<section class="log-section" id="next-week">
-  <h2>Week slate</h2>
-  {% if log.slateIntro %}
-  <p>{{ log.slateIntro }}</p>
-  {% endif %}
-  <div class="matchup-list">
+<section class="log-section" id="next">
+  <div class="log-section__heading">
+    <h2 class="log-section__title">Week {{ nextWeek }}</h2>
+    <span class="log-section__aside">Our picks · record {{ recordLabel }}</span>
+  </div>
+  <div class="log-slates">
     {% for game in log.slate %}
-      {{ matchupCard(game, "preview") }}
+      {{ slateCard(game) }}
     {% endfor %}
   </div>
-  {% if log.slateOutro %}
-  <p>{{ log.slateOutro }}</p>
-  {% endif %}
 </section>
 {% endif %}
 
 {% if log.gotw %}
-<section class="log-section" id="gotw">
-  <h2>Game of the Week</h2>
-  {{ matchupCard(log.gotw, "featured") }}
-  {% if log.gotw.blurb %}
-  <p>{{ log.gotw.blurb }}</p>
+{%- set home = log.gotw.home | logTeam -%}
+{%- set away = log.gotw.away | logTeam -%}
+{%- set pick = log.gotw.pick | logTeam if log.gotw.pick else none -%}
+<section class="log-section log-gotw" id="gotw">
+  <h2 class="log-section__title">Game of the Week</h2>
+  <p class="log-gotw__title">{{ home.name }} <span class="log-gotw__vs">vs</span> {{ away.name }}</p>
+  {% if pick %}
+  <div class="log-gotw__pickline">
+    <span class="log-gotw__abbr">{{ pick.abbr }}</span>
+    <span class="log-gotw__banner">Our pick - {{ log.gotw.pickLabel or pick.name }}</span>
+  </div>
   {% endif %}
+  <div class="log-gotw__colophon">
+    <span>LOG prediction record</span>
+    <span class="log-gotw__record">{{ recordLabel }}</span>
+  </div>
+  <div class="log-gotw__links">
+    <a href="/">All posts</a>
+    <a href="/feed.xml">RSS</a>
+  </div>
 </section>
 {% endif %}
