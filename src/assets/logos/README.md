@@ -35,9 +35,9 @@ Tried once from the provided logo map. Cached files are the ones that downloaded
 | Prestige Worldwide | Sean Lockovich | Cached | `prestige-worldwide.jpg` (WordPress JPEG, resized to 256px for phone cards) |
 | CeeDeez Nutz | Eric Bunn | Cached | `ceedeez-nutz.svg` (espncdn logo pack) |
 | Size Matters | Nick Harper | Cached | `size-matters.svg` (espncdn Marvel Hulk) |
-| AINTS dat a B** Payola | Micah Goins | Cached | `aints-dat-a-b-payola.svg` (ESPN default logo 19) |
+| AINTS dat a B Payola | Micah Goins | Cached | `aints-dat-a-b-payola.svg` (ESPN default logo 19) |
 | Drake It To You Make It | James D | Cached | `drake-it-to-you-make-it.svg` (espncdn Disney pack) |
-| -Sutt-Dog - | Chris Sutton | Cached | `sutt-dog.svg` (espncdn Crazy Helmets pack) |
+| Sutt-Dog | Chris Sutton | Cached | `sutt-dog.svg` (espncdn Crazy Helmets pack) |
 | Lock in fn | Reggie B | Cached | `lock-in-fn.png` (approved face crop; Mystique API 401 so this is the local replacement, not a CDN hotlink) |
 | Team Robottom | Chad Robottom | Cached | `team-robottom.svg` (ESPN default logo 6) |
 | Pimp Trick Gangsta Clique | Bernard Ford | Fallback (initials `PT`) | Photobucket returned a watermarked "Groups by photobucket" overlay, not a clean logo. Do not hotlink. Source: `https://i925.photobucket.com/albums/ad94/tjondo/Presentation1.jpg` |

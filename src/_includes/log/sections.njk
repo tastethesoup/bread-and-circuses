@@ -46,7 +46,7 @@
 <section class="log-section" id="next">
   <div class="log-section__heading">
     <h2 class="log-section__title">Week {{ nextWeek }}</h2>
-    <span class="log-section__aside">Our picks · record {{ recordLabel }}</span>
+    <span class="log-section__aside">LOG picks · record {{ recordLabel }}</span>
   </div>
   <div class="log-slates">
     {% for game in log.slate %}
@@ -66,7 +66,7 @@
   {% if pick %}
   <div class="log-gotw__pickline">
     <span class="log-gotw__abbr">{{ pick.abbr }}</span>
-    <span class="log-gotw__banner">Our pick - {{ log.gotw.pickLabel or pick.name }}</span>
+    <span class="log-gotw__banner">LOG pick - {{ log.gotw.pickLabel or pick.name }}</span>
   </div>
   {% endif %}
   <div class="log-gotw__colophon">
