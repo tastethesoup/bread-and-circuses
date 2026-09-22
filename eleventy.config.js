@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { HtmlBasePlugin } from "@11ty/eleventy";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import site from "./src/_data/site.json" with { type: "json" };
@@ -14,6 +17,31 @@ import {
   weekWord,
   winnerSide,
 } from "./log-lib.js";
+
+const rootDir = path.dirname(fileURLToPath(import.meta.url));
+
+function siteUrl(value) {
+  const origin = String(site.url || "").replace(/\/$/, "");
+  const raw = String(value ?? "").trim();
+  if (!raw) {
+    return origin;
+  }
+  if (/^https?:\/\//i.test(raw)) {
+    return raw;
+  }
+  return `${origin}${raw.startsWith("/") ? raw : `/${raw}`}`;
+}
+
+function logOgPath(week) {
+  if (week == null || week === "") {
+    return "";
+  }
+  const filename = `log-week-${week}.png`;
+  if (!existsSync(path.join(rootDir, "src", "assets", "og", filename))) {
+    return "";
+  }
+  return `/assets/og/${filename}`;
+}
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default function (eleventyConfig) {
@@ -66,6 +94,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {
     return new Date(dateObj).toISOString().slice(0, 10);
   });
+
+  eleventyConfig.addFilter("siteUrl", (value) => siteUrl(value));
+  eleventyConfig.addFilter("logOgPath", (week) => logOgPath(week));
 
   eleventyConfig.addFilter("logTeam", (ref) => resolveTeam(ref));
   eleventyConfig.addFilter("logChip", (kind) => chipMeta(kind));
