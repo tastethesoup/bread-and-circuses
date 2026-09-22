@@ -33,7 +33,7 @@ log:
       move: "-"                    # or ▲1 / ▼1 starting Week 2
       blurb: One line on this team.
   blotter:
-    - team: "AINTS dat a B** Payola"
+    - team: "AINTS dat a B Payola"
       charge: Sitting the wrong tight end
       evidence: What they did. Player points rounded, no decimals.
   slate:
@@ -46,10 +46,10 @@ log:
     home: "Prestige Worldwide"
     away: "Drake It To You Make It"
     pick: "Prestige Worldwide"
-    pickLabel: Prestige            # short name on the OUR PICK banner
+    pickLabel: Prestige            # short name on the LOG pick banner
 ```
 
-Team names can be the full name or the slug (`prestige-worldwide`). Quote names that start with a hyphen (like `"-Sutt-Dog -"`). Unknown names still render. The league has 10 teams.
+Team names can be the full name or the slug (`prestige-worldwide`). Display names live in `src/_data/logTeams.json` (`Sutt-Dog`, `AINTS dat a B Payola`). Unknown names still render. The league has 10 teams.
 
 The Markdown body is the rest of the cold open (paragraphs under the display lede). Games, rankings, blotter, slate, and GOTW come from `log` so you are not maintaining two copies.
 
@@ -75,7 +75,7 @@ Number, team in small caps, **charge** as the title, evidence in Courier Prime. 
 
 `log.slate` is next week's card, in schedule order. The gold check sits on the picked row. Omit `pick` for **No pick**. Add `gotw: true` on the Game of the Week row.
 
-`log.gotw` is the display closer: both names, a initials box, and **Our pick - {pickLabel}**.
+`log.gotw` is the display closer: both names, a initials box, and **LOG pick - {pickLabel}**.
 
 ## Logos
 

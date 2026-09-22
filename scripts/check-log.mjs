@@ -73,7 +73,7 @@ for (const token of [
   "Daamn Daniel",
   "Winning lucky counts",
   "Picks 0-0",
-  "Our pick - Robottom",
+  "LOG pick - Robottom",
   "199.80",
   "137.80",
   "194.40",
