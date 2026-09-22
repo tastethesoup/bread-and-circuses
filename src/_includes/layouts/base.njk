@@ -5,6 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if title %}{{ title }} · {% endif %}{{ site.title }}</title>
     <meta name="description" content="{{ description or site.description }}">
+    {% if tags and ("posts" in tags) %}
+    {% set shareTitle = title %}
+    {% set shareDescription = description or site.description %}
+    {% set shareUrl = page.url | siteUrl %}
+    {% set shareImagePath = "" %}
+    {% if ogImage %}
+      {% set shareImagePath = ogImage %}
+    {% elif log and log.ogImage %}
+      {% set shareImagePath = log.ogImage %}
+    {% elif log and log.week %}
+      {% set shareImagePath = log.week | logOgPath %}
+    {% endif %}
+    <meta property="og:title" content="{{ shareTitle }}">
+    <meta property="og:description" content="{{ shareDescription }}">
+    <meta property="og:url" content="{{ shareUrl }}">
+    <meta property="og:type" content="article">
+    {% if shareImagePath %}
+    <meta property="og:image" content="{{ shareImagePath | siteUrl }}">
+    {% endif %}
+    <meta name="twitter:card" content="{% if shareImagePath %}summary_large_image{% else %}summary{% endif %}">
+    {% if shareImagePath %}
+    <meta name="twitter:image" content="{{ shareImagePath | siteUrl }}">
+    {% endif %}
+    <meta name="twitter:title" content="{{ shareTitle }}">
+    <meta name="twitter:description" content="{{ shareDescription }}">
+    {% endif %}
     {% if log %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

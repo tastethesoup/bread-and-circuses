@@ -77,6 +77,20 @@ Number, team in small caps, **charge** as the title, evidence in Courier Prime. 
 
 `log.gotw` is the display closer: both names, a initials box, and **LOG pick - {pickLabel}**.
 
+## Open Graph card
+
+Posts get Open Graph and Twitter card tags from `src/_includes/layouts/base.njk`. For a LOG week, the image is `/assets/og/log-week-{n}.png` when that file exists under `src/assets/og/`. `src/assets/` is passthrough-copied, so the built URL is `/assets/og/log-week-2.png` and the live absolute URL is `https://breadandcircuses.xyz/assets/og/log-week-2.png`.
+
+Override the path with front matter `ogImage` or `log.ogImage` (root-relative or absolute). Leave both unset to use the week file.
+
+Render the next cream card (Instrument Serif, 1200×630). This is not part of `npm run build`, so CI does not need the fonts:
+
+```bash
+python3 scripts/render-log-og.py 3
+```
+
+Pillow is required (`pip install pillow`). Fonts are vendored in `scripts/fonts/`. Commit the PNG with the post.
+
 ## Logos
 
 Team records live in `src/_data/logTeams.json` (10 teams, ESPN leagueId 856379). Artwork lives in `src/assets/logos/` for when a mark is useful. The newspaper layout prints names (and GOTW initials from `abbr`). Do not hotlink ESPN CDN, Photobucket, WordPress, or Mystique URLs.
