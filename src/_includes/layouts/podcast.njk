@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+---
+<article class="post">
+  <header class="post-header">
+    <h1>{{ title }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+      {% if podcast and podcast.runtime %}
+        <span class="post-kicker">{{ podcast.runtime }}</span>
+      {% endif %}
+    </p>
+  </header>
+  {% if podcast and podcast.audio %}
+    <audio class="podcast-audio" controls src="{{ podcast.audio }}"></audio>
+  {% endif %}
+  <div class="post-body">
+    {{ content | safe }}
+    {% if podcast and podcast.showNotes and podcast.showNotes.length %}
+      <h2>Show notes</h2>
+      <ul>
+        {% for note in podcast.showNotes %}
+          <li>{{ note }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+  <p class="back-link"><a href="/">All posts</a> · <a href="/posts/log-week-3/">LOG Week 3</a></p>
+</article>

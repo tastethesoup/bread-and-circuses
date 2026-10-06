@@ -190,6 +190,12 @@ main {
   margin: 2rem 0 0;
 }
 
+.podcast-audio {
+  display: block;
+  width: 100%;
+  margin: 0 0 1.5rem;
+}
+
 .site-footer {
   display: flex;
   flex-wrap: wrap;
