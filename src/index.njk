@@ -1,18 +1,121 @@
 ---
 layout: layouts/base.njk
+homePage: true
 ---
-<h1 class="visually-hidden">Posts</h1>
+{%- set lead = collections.desk | first -%}
+{%- set logLatest = collections.logWeeks | first -%}
+<div class="home-paper">
+  <header class="home-masthead">
+    <p class="home-masthead__eyebrow">
+      <span>{% if lead %}{{ lead.date | longDate }}{% endif %}</span>
+      <span>{{ site.domain }}</span>
+    </p>
+    <p class="home-masthead__title"><a href="/">{{ site.title }}</a></p>
+    <p class="home-masthead__tagline">{{ site.description }}</p>
+    <nav class="home-nav" aria-label="Sections">
+      {% if lead %}<a href="{{ lead.url }}">Credit &amp; Fed Desk</a>{% endif %}
+      {% if logLatest %}<a href="{{ logLatest.url }}">The LOG</a>{% endif %}
+      <a href="/archive/">All posts</a>
+      <a href="#on-the-name">On the name</a>
+    </nav>
+  </header>
 
-<ol class="post-list">
-  {% for post in collections.posts | reverse %}
-    <li>
-      <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-      <a href="{{ post.url }}">{{ post.data.title }}</a>
-      {% if post.data.description %}
-        <p>{{ post.data.description }}</p>
+  <div class="home-grid">
+    <section class="home-desk" aria-labelledby="desk-heading">
+      <h2 class="home-label" id="desk-heading">Credit &amp; Fed Desk · Daily</h2>
+      {% if lead %}
+      <article class="home-lead">
+        <time class="home-date" datetime="{{ lead.date | htmlDateString }}">{{ lead.date | readableDate }}</time>
+        <h3 class="home-lead__title"><a href="{{ lead.url }}">{{ lead.data.title }}</a></h3>
+        {% if lead.data.description %}<p class="home-lead__dek">{{ lead.data.description }}</p>{% endif %}
+        <p class="home-lead__actions">
+          {% if lead.data.podcast.audio %}<a class="home-btn home-btn--solid home-listen" href="{{ lead.data.podcast.audio }}" data-audio="home-lead-audio" data-runtime="{{ lead.data.podcast.runtime }}">&#9654; Listen{% if lead.data.podcast.runtime %} · {{ lead.data.podcast.runtime }}{% endif %}</a>{% endif %}
+          <a class="home-btn" href="{{ lead.url }}">Read notes</a>
+        </p>
+        {% if lead.data.podcast.audio %}<audio class="home-audio" id="home-lead-audio" controls preload="none" src="{{ lead.data.podcast.audio }}" aria-label="{{ lead.data.title }}" hidden></audio>{% endif %}
+      </article>
+
+      {% set earlier = collections.desk.slice(1, 4) %}
+      {% if earlier.length %}
+      <h2 class="home-label home-label--muted">Earlier this week</h2>
+      <ol class="home-index">
+        {% for post in earlier %}
+        <li class="home-index__item">
+          <time class="home-index__date" datetime="{{ post.date | htmlDateString }}">{{ post.date | shortDate | upper }}</time>
+          <div>
+            <a class="home-index__title" href="{{ post.url }}">{{ post.data.title }}</a>
+            {% if post.data.description %}<p class="home-index__dek">{{ post.data.description }}</p>{% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
       {% endif %}
-    </li>
-  {% else %}
-    <li>No posts yet.</li>
-  {% endfor %}
-</ol>
+      <a class="home-more" href="/archive/">All posts &rarr;</a>
+      {% endif %}
+    </section>
+
+    {% if logLatest %}
+    <aside class="home-log" aria-labelledby="log-heading">
+      <h2 class="home-label" id="log-heading">The LOG · Weekly</h2>
+      <p class="home-log__kicker">{{ logLatest.data.log.kicker or "League of Ordinary Gentlemen fantasy football newsletter" }}</p>
+      <div class="home-log__latest">
+        <time class="home-date" datetime="{{ logLatest.date | htmlDateString }}">{{ logLatest.date | readableDate }}</time>
+        <h3 class="home-log__title"><a href="{{ logLatest.url }}">{{ logLatest.data.title }}</a></h3>
+        {% if logLatest.data.description %}<p class="home-log__dek">{{ logLatest.data.description }}</p>{% endif %}
+      </div>
+      {% if logLatest.data.log.record %}
+      <p class="home-log__picks"><span>Picks</span><strong>{{ logLatest.data.log.record }}</strong></p>
+      {% endif %}
+      {% set pastWeeks = collections.logWeeks.slice(1, 4) %}
+      {% if pastWeeks.length %}
+      <p class="home-log__past">
+        <span>Past</span>
+        {% for post in pastWeeks %}<a href="{{ post.url }}">Wk {{ post.data.log.week }}</a>{% endfor %}
+      </p>
+      {% endif %}
+    </aside>
+    {% endif %}
+  </div>
+
+  {% include "partials/on-the-name.njk" %}
+</div>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll(".home-listen[data-audio]");
+    Array.prototype.forEach.call(buttons, function (btn) {
+      var audio = document.getElementById(btn.getAttribute("data-audio"));
+      if (!audio || typeof audio.play !== "function") return;
+      var runtime = btn.getAttribute("data-runtime");
+      var suffix = runtime ? " \u00b7 " + runtime : "";
+      btn.setAttribute("role", "button");
+      btn.setAttribute("aria-controls", audio.id);
+      function render() {
+        var playing = !audio.paused && !audio.ended;
+        btn.textContent = (playing ? "\u275a\u275a Pause" : "\u25b6 Listen") + suffix;
+        btn.setAttribute("aria-pressed", playing ? "true" : "false");
+        btn.classList.toggle("is-playing", playing);
+      }
+      function toggle(event) {
+        event.preventDefault();
+        audio.hidden = false;
+        if (audio.paused || audio.ended) {
+          var p = audio.play();
+          if (p && typeof p.catch === "function") {
+            p.catch(function () { render(); });
+          }
+        } else {
+          audio.pause();
+        }
+      }
+      btn.addEventListener("click", toggle);
+      btn.addEventListener("keydown", function (event) {
+        if (event.key === " " || event.key === "Spacebar") toggle(event);
+      });
+      ["play", "playing", "pause", "ended"].forEach(function (name) {
+        audio.addEventListener(name, render);
+      });
+      render();
+    });
+  })();
+</script>
