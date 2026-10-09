@@ -20,6 +20,8 @@ function mustExist(rel) {
 }
 
 mustExist("index.html");
+mustExist("archive/index.html");
+mustExist("css/home.css");
 mustExist("feed.xml");
 mustExist("posts/log-week-1/index.html");
 mustExist("css/style.css");
@@ -44,6 +46,7 @@ if (existsSync(path.join(site, "assets/logos/paper-lions.svg"))) {
 
 const html = readFileSync(path.join(site, "posts/log-week-1/index.html"), "utf8");
 const index = readFileSync(path.join(site, "index.html"), "utf8");
+const archive = readFileSync(path.join(site, "archive/index.html"), "utf8");
 const feed = readFileSync(path.join(site, "feed.xml"), "utf8");
 const css = readFileSync(path.join(site, "css/style.css"), "utf8");
 const source = readFileSync(
@@ -135,8 +138,12 @@ for (const host of [
   }
 }
 
-if (!index.includes("/posts/log-week-1/") || !index.includes("LOG Week 1")) {
-  fail("home page does not list LOG Week 1");
+if (!archive.includes("/posts/log-week-1/") || !archive.includes("LOG Week 1")) {
+  fail("archive page does not list LOG Week 1");
+}
+
+if (!index.includes('href="/archive/"') || !index.includes("home-log")) {
+  fail("home page is missing the LOG card or the All posts link");
 }
 
 if (!feed.includes("LOG Week 1") || !feed.includes("feed")) {

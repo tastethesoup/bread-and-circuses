@@ -86,6 +86,27 @@ export default function (eleventyConfig) {
     }).format(dateObj);
   });
 
+  // Credit & Fed Desk episodes (any post with `podcast:` front matter), newest first.
+  eleventyConfig.addCollection("desk", (api) =>
+    api.getFilteredByTag("posts").filter((p) => p.data.podcast).reverse(),
+  );
+
+  // LOG weeks (any post with `log:` front matter), newest first.
+  eleventyConfig.addCollection("logWeeks", (api) =>
+    api.getFilteredByTag("posts").filter((p) => p.data.log).reverse(),
+  );
+
+  // "Thursday, October 8, 2026" for the home masthead.
+  eleventyConfig.addFilter("longDate", (dateObj) =>
+    new Intl.DateTimeFormat("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: "UTC",
+    }).format(dateObj),
+  );
+
   eleventyConfig.addFilter("shortDate", (dateObj) => formatShortDate(dateObj));
   eleventyConfig.addFilter("weekWord", (n) => weekWord(n));
   eleventyConfig.addFilter("logScore", (value) => formatScore(value));

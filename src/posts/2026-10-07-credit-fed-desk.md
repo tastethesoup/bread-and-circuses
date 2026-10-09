@@ -25,4 +25,4 @@ And this morning in Singapore, Ray Dalio called AI a "classic bubble." On the po
 
 Meanwhile, at the bottom of the credit market, JPMorgan says deeply distressed loans just hit their highest since March 2020. The biggest slice is tech.
 
-<p class="back-link"><a href="/">All posts</a> · <a href="/posts/credit-fed-desk-2026-10-06/">October 6</a></p>
+<p class="back-link"><a href="/archive/">All posts</a> · <a href="/posts/credit-fed-desk-2026-10-06/">October 6</a></p>
