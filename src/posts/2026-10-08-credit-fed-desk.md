@@ -25,4 +25,4 @@ Then the Fed minutes landed, and they said another hike is likely by year end. T
 
 Meanwhile, Oracle, Broadcom and SpaceX are lining up debt deals in the tens of billions to pay for AI chips. And in Australia, an Nvidia-backed data-center IPO just ran short of buyers.
 
-<p class="back-link"><a href="/">All posts</a> · <a href="/posts/credit-fed-desk-2026-10-07/">October 7</a></p>
+<p class="back-link"><a href="/archive/">All posts</a> · <a href="/posts/credit-fed-desk-2026-10-07/">October 7</a></p>
