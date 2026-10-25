@@ -2,3 +2,7 @@ node_modules/
 _site/
 .cache/
 .DS_Store
+explainers/build/
+*.mp4
+__pycache__/
+*.pyc
