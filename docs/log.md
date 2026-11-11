@@ -83,7 +83,16 @@ Posts get Open Graph and Twitter card tags from `src/_includes/layouts/base.njk`
 
 Override the path with front matter `ogImage` or `log.ogImage` (root-relative or absolute). Leave both unset to use the week file.
 
-Render the next cream card (Instrument Serif, 1200×630). This is not part of `npm run build`, so CI does not need the fonts:
+The cream card (Instrument Serif, 1200×630) keeps "LOG / Week N" and draws that week's title line underneath, in place of the shared newsletter subtitle. The render script reads the line from the week's post, in this order:
+
+1. `log.ogTitleLine` (optional override)
+2. `pullQuote`
+3. `log.pullQuote`
+4. `log.lede`
+
+If all of those are blank, the card falls back to the shared two-line subtitle, "League of Ordinary Gentlemen fantasy football newsletter." Long lines wrap onto up to three lines, at the same 58pt italic as the old subtitle. The script prefers a comma break when both sides fit. If a line still does not fit, it steps the size down to 44pt, then truncates the last line. Do not use em dashes in the title line.
+
+This is not part of `npm run build`, so CI does not need the fonts:
 
 ```bash
 python3 scripts/render-log-og.py 3
